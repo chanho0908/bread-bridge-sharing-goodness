@@ -11,6 +11,8 @@ import Reservations from "./pages/Reservations";
 import Profile from "./pages/Profile";
 import Donate from "./pages/Donate";
 import NotFound from "./pages/NotFound";
+import BakeryDetail from "./pages/BakeryDetail";
+import BookingForm from "./pages/BookingForm";
 
 const queryClient = new QueryClient();
 
