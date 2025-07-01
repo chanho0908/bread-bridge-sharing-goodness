@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+## 배포주소
+https://lovable.dev/projects/9026647d-45c4-49f0-9747-f9c5f53b95f7
 
-## Project info
+# 🧁 빵빵하게
 
-**URL**: https://lovable.dev/projects/9026647d-45c4-49f0-9747-f9c5f53b95f7
+## 📌 프로젝트 소개
+'빵빵하게'는 제과점에서 판매되지 않은 빵을 모바일 애플리케이션을 통해 결식 아동, 독거 노인 등 사회적 소외 계층에게 기부하고 수령할 수 있도록 돕는 서비스입니다. 복잡한 기부 절차를 간소화하고 투명성을 확보하여 사용자들이 손쉽게 나눔에 참여할 수 있도록 지원합니다.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 👥 주요 사용자 정의
 
-**Use Lovable**
+| 사용자 구분 | 정의 |
+| --- | --- |
+| **기부자 (기부 매장)** | 남은 빵을 기부하고자 하는 제과점, 프랜차이즈, 개인 카페의 점주 또는 직원 |
+| **수혜자 (나눔 대상자)** | 결식 아동, 독거 노인 등 끼니 해결이 어려운 사회적 소외 계층 및 그 보호자, 복지사 등 |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9026647d-45c4-49f0-9747-f9c5f53b95f7) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🎯 사용자 니즈 요약
 
-**Use your preferred IDE**
+### 🧁 기부자 – 제과점 운영자
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| 항목 | 내용 |
+| --- | --- |
+| 문제점 | - 수기 기부 절차가 번거롭고 오래 걸림<br>- 기부한 빵의 전달 경로 불투명<br>- 남는 빵 양이 일정하지 않아 정기 기부가 부담됨 |
+| 니즈 | - **모바일 앱을 통한 간편 등록**<br>- **수령 인증 시스템**을 통한 투명한 기부 이력<br>- **기부 통계 및 히스토리 제공**<br>- **비정기적 기부도 유연하게 처리** 가능 |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🥖 수혜자 – 결식 아동, 독거 노인 등
 
-Follow these steps:
+| 항목 | 내용 |
+| --- | --- |
+| 문제점 | - 기부 장소 및 방법에 대한 **정보 부족**<br>- 복잡한 수혜 절차와 **심리적 위축**<br>- **헛걸음**이 많음 |
+| 니즈 | - **지도 기반 매장 탐색 기능**<br>- **간편한 예약 및 수령 시스템**<br>- **개인 정보 노출 최소화**<br>- **쉬운 UI/UX (고령층 고려)** |
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 👤 사용자 페르소나
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 🧁 기부자 – 제과점 점주
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+| 항목 | 내용 |
+| --- | --- |
+| 이름 | 박선영 |
+| 나이 | 45세 |
+| 직업 | 동네 제과점 운영 (‘선영이네 베이커리’) |
+| 소개 | 10년째 동네에서 작은 빵집을 운영 중입니다. 매일 정성껏 빵을 만들지만, 저녁 마감 시간이 되면 팔리지 않고 남는 빵들이 항상 마음에 걸립니다. <br/>그냥 버리기엔 너무 아깝고, 누군가에게 도움이 되었으면 하는 마음이 크지만 바쁜 가게 운영 중에 기부처를 알아보고 직접 연락하는 과정이 번거로워 망설일 때가 많습니다. |
+| 목표 | - 낭비 없이 지역사회에 기여하고 싶다<br>- 기부 과정을 **간단하고 빠르게** 만들고 싶다<br>- 기부가 **누구에게 어떤 도움**이 되었는지 알고 싶다 |
+| 니즈 | - **모바일 등록 기능**<br>- **수령 예약 확인 기능**<br>- **기부 히스토리 및 통계** 확인 기능 |
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 🥖 수혜자 – 독거 어르신
 
-**Use GitHub Codespaces**
+| 항목 | 내용 |
+| --- | --- |
+| 이름 | 김춘배 |
+| 나이 | 72세 |
+| 직업 | 무직 |
+| 소개 | 내 나이 72세 김춘배. 자녀들은 모두 출가하고 혼자 지내고 있소… 매번 끼니를 챙기는 것을 고사할 때가 많지만, 가끔은 따뜻한 빵 한 조각이 그립다오… 복지관에서 가끔 도움을 받지만, 매번 찾아가기도 힘들고 원하는 시간에 도움을 받기 어렵다오… 스마트폰 사용이 익숙하지는 않지만, 아들이 알려준 앱으로 날씨를 확인하는 정도는 할 수 있다오… |
+| 목표 | - 끼니를 **제때 해결**하고 싶다<br>- **눈치 보지 않고 편안하게** 도움을 받고 싶다<br>- **집 근처**에서 쉽게 이용하고 싶다 |
+| 니즈 | - **글씨 크고 직관적인 앱 인터페이스**<br>- **지도 기반 기부 장소 탐색**<br>- **예약 기반 수령 시스템** |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📌 사용자 인수 조건
+### 1. 간편 기부 등록
+사용자 스토리: 나는 기부자로서 남은 빵을 손쉽게 기부하기 위해 모바일 앱을 통해 기부 정보를 등록하기를 원한다.
+#### 인수 조건
++ **Given** : 기부자가 '기부 등록' 화면에 접속하여 필수 정보를 입력한다.
++ **When** : 기부자가 '등록' 버튼을 누르거나, 등록된 정보를 수정/삭제한다.
++ **Then** : 기부 정보가 성공적으로 등록/수정/삭제되고 수혜자에게 반영된다.
 
-This project is built with:
+### 2. 수령 예약 확인 및 관리
+사용자 스토리: 나는 기부자로서 수혜자의 빵 수령 예약을 효율적으로 관리하기 위해 예약 현황을 확인하고 승인/거절 처리하기를 원한다.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+#### 인수 조건
++ **Given** : 기부자에게 새로운 빵 예약 요청이 들어오거나, 예약된 빵의 픽업이 완료된다.
++ **When** : 기부자가 앱에서 예약을 확인하고 승인/거절하거나, 픽업 완료를 처리한다.
++ **Then** : 예약 상태가 업데이트되고, 수혜자에게 관련 알림이 전송되며 기부 이력에 기록된다.
 
-## How can I deploy this project?
+### 3.기부 이력 및 통계 조회
+사용자 스토리: 나는 기부자로서 나의 기부 활동이 어떤 영향을 주었는지 확인하기 위해 기부 이력과 통계를 조회하기를 원한다.
 
-Simply open [Lovable](https://lovable.dev/projects/9026647d-45c4-49f0-9747-f9c5f53b95f7) and click on Share -> Publish.
+#### 인수 조건
++ **Given** : 기부자가 '기부 히스토리' 또는 '기부 통계' 화면에 접속한다.
++ **When** : 기부자가 날짜 또는 기간을 선택하여 조회하거나 통계 정보를 확인한다.
++ **Then** : 해당 기간의 기부 내역이 목록으로 표시되거나, 총 기부량 및 횟수 등의 통계가 시각화되어 표시된다.
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
