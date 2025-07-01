@@ -1,5 +1,5 @@
 ## 배포주소
-https://lovable.dev/projects/9026647d-45c4-49f0-9747-f9c5f53b95f7
+https://bread-bridge-sharing-goodness.lovable.app/
 
 # 🧁 빵빵하게
 
