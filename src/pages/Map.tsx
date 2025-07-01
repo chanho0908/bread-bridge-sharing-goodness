@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
 import { MapPin, Clock, Heart, Phone, Navigation } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Map = () => {
   const [selectedBakery, setSelectedBakery] = useState(null);
+  const navigate = useNavigate();
   
   const bakeries = [
     {
@@ -44,6 +45,14 @@ const Map = () => {
     }
   ];
 
+  const handleReservation = (bakeryId: number) => {
+    navigate(`/bakery/${bakeryId}`);
+  };
+
+  const handleBakeryClick = (bakery: any) => {
+    navigate(`/bakery/${bakery.id}`);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-6">
@@ -63,13 +72,16 @@ const Map = () => {
             </div>
             
             {/* Mock Map Markers */}
-            <div className="absolute top-1/4 left-1/3 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
+            <div className="absolute top-1/4 left-1/3 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg cursor-pointer hover:bg-orange-700"
+                 onClick={() => handleBakeryClick(bakeries[0])}>
               1
             </div>
-            <div className="absolute top-1/2 right-1/3 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
+            <div className="absolute top-1/2 right-1/3 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg cursor-pointer hover:bg-orange-700"
+                 onClick={() => handleBakeryClick(bakeries[1])}>
               2
             </div>
-            <div className="absolute bottom-1/3 left-1/2 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
+            <div className="absolute bottom-1/3 left-1/2 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg cursor-pointer hover:bg-orange-700"
+                 onClick={() => handleBakeryClick(bakeries[2])}>
               3
             </div>
           </div>
@@ -130,7 +142,13 @@ const Map = () => {
               </div>
 
               <div className="flex gap-2">
-                <button className="flex-1 bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleReservation(bakery.id);
+                  }}
+                  className="flex-1 bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium"
+                >
                   예약하기
                 </button>
                 <button className="px-4 py-2 border border-orange-600 text-orange-600 rounded-lg hover:bg-orange-50 transition-colors">

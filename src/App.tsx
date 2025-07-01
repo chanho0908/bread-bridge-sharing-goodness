@@ -28,6 +28,8 @@ const App = () => (
             <Route path="profile" element={<Profile />} />
             <Route path="donate" element={<Donate />} />
           </Route>
+          <Route path="/bakery/:id" element={<BakeryDetail />} />
+          <Route path="/booking/:id" element={<BookingForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
