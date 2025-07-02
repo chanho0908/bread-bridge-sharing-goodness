@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, MapPin, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +12,8 @@ interface Reservation {
 }
 
 const ReservationFloatingWidget = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  
   // Mock data - 실제로는 전역 상태나 API에서 가져올 데이터
   const activeReservation: Reservation | null = {
     id: 1,
@@ -21,7 +23,7 @@ const ReservationFloatingWidget = () => {
     estimatedTime: '약 30분 후 준비 예정'
   };
 
-  if (!activeReservation) return null;
+  if (!activeReservation || !isVisible) return null;
 
   const getStatusInfo = (status: string) => {
     switch (status) {
@@ -37,6 +39,14 @@ const ReservationFloatingWidget = () => {
   };
 
   const statusInfo = getStatusInfo(activeReservation.status);
+
+  const handleClose = () => {
+    setIsVisible(false);
+  };
+
+  const handleDetailClick = () => {
+    setIsVisible(false);
+  };
 
   return (
     <aside 
@@ -56,6 +66,7 @@ const ReservationFloatingWidget = () => {
             </span>
           </div>
           <button 
+            onClick={handleClose}
             className="btn-accessible-small text-gray-600 hover:text-gray-800 focus:text-gray-800 flex items-center justify-center rounded-lg hover:bg-gray-100 focus:bg-gray-100"
             aria-label="예약 위젯 닫기"
           >
@@ -80,6 +91,7 @@ const ReservationFloatingWidget = () => {
         <div className="flex space-x-3">
           <Link 
             to="/reservations" 
+            onClick={handleDetailClick}
             className="flex-1 bg-orange-700 text-white btn-accessible rounded-lg hover:bg-orange-800 focus:bg-orange-800 transition-colors text-center flex items-center justify-center"
             aria-label="예약 상세 정보 보기"
           >
