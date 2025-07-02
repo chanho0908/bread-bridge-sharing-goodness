@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock, MapPin, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -13,13 +12,35 @@ interface Reservation {
 
 const ReservationFloatingWidget = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [currentTime, setCurrentTime] = useState(new Date());
   
-  // Mock data - 실제로는 전역 상태나 API에서 가져올 데이터
-  const activeReservation: Reservation | null = {
+  // Update current time every minute
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000); // Update every minute
+    
+    return () => clearInterval(timer);
+  }, []);
+  
+  // Calculate 30 minutes from current time
+  const completionTime = new Date(currentTime.getTime() + 30 * 60 * 1000);
+  const pickupStartTime = new Date(completionTime.getTime() - 60 * 60 * 1000); // 1 hour before completion
+  
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('ko-KR', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: false 
+    });
+  };
+  
+  // Dynamic reservation based on current time
+  const activeReservation: Reservation = {
     id: 1,
     bakery: '선영이네 베이커리',
     status: 'confirmed',
-    pickupTime: '16:00 - 18:00',
+    pickupTime: `${formatTime(pickupStartTime)} - ${formatTime(completionTime)}`,
     estimatedTime: '약 30분 후 준비 예정'
   };
 

@@ -1,9 +1,34 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Check, X, AlertCircle } from 'lucide-react';
 
 const Reservations = () => {
   const [activeTab, setActiveTab] = useState('current');
+  const [currentTime, setCurrentTime] = useState(new Date());
+  
+  // Update current time every minute
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+    
+    return () => clearInterval(timer);
+  }, []);
+  
+  // Calculate dynamic reservation times
+  const completionTime = new Date(currentTime.getTime() + 30 * 60 * 1000);
+  const pickupStartTime = new Date(completionTime.getTime() - 60 * 60 * 1000);
+  
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('ko-KR', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: false 
+    });
+  };
+  
+  const formatDateTime = (date: Date) => {
+    return date.toLocaleString('ko-KR');
+  };
   
   const currentReservations = [
     {
@@ -11,10 +36,10 @@ const Reservations = () => {
       bakery: '선영이네 베이커리',
       address: '서울시 강남구 테헤란로 123',
       items: ['크로와상 2개', '식빵 1개'],
-      reservationTime: '2024-01-15 14:00',
-      pickupTime: '2024-01-15 16:00 - 18:00',
+      reservationTime: formatDateTime(new Date()),
+      pickupTime: `${formatTime(pickupStartTime)} - ${formatTime(completionTime)}`,
       status: 'confirmed',
-      reservationNumber: 'R240115001'
+      reservationNumber: `R${new Date().toISOString().slice(0, 10).replace(/-/g, '')}001`
     },
     {
       id: 2,
@@ -189,7 +214,7 @@ const Reservations = () => {
                   <div className="space-y-1">
                     <p className="text-sm text-gray-600 flex items-center">
                       <Calendar className="w-4 h-4 mr-1" />
-                      예약: {new Date(reservation.reservationTime).toLocaleString('ko-KR')}
+                      예약: {reservation.reservationTime}
                     </p>
                     <p className="text-sm text-gray-600 flex items-center">
                       <Clock className="w-4 h-4 mr-1" />
