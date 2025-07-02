@@ -26,59 +26,75 @@ const ReservationFloatingWidget = () => {
   const getStatusInfo = (status: string) => {
     switch (status) {
       case 'confirmed':
-        return { text: '예약 확정', color: 'bg-green-500', textColor: 'text-green-800' };
+        return { text: '예약 확정', color: 'bg-green-600', textColor: 'text-green-900', bgColor: 'bg-green-100' };
       case 'pending':
-        return { text: '승인 대기', color: 'bg-yellow-500', textColor: 'text-yellow-800' };
+        return { text: '승인 대기', color: 'bg-yellow-600', textColor: 'text-yellow-900', bgColor: 'bg-yellow-100' };
       case 'ready':
-        return { text: '수령 준비됨', color: 'bg-blue-500', textColor: 'text-blue-800' };
+        return { text: '수령 준비됨', color: 'bg-blue-600', textColor: 'text-blue-900', bgColor: 'bg-blue-100' };
       default:
-        return { text: '알 수 없음', color: 'bg-gray-500', textColor: 'text-gray-800' };
+        return { text: '알 수 없음', color: 'bg-gray-600', textColor: 'text-gray-900', bgColor: 'bg-gray-100' };
     }
   };
 
   const statusInfo = getStatusInfo(activeReservation.status);
 
   return (
-    <div className="fixed bottom-20 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:w-80 z-50">
-      <div className="bg-white rounded-xl shadow-lg border border-orange-100 p-4">
-        <div className="flex items-start justify-between mb-3">
-          <div className="flex items-center space-x-2">
-            <div className={`w-3 h-3 rounded-full ${statusInfo.color}`}></div>
-            <span className={`text-sm font-medium ${statusInfo.textColor} bg-opacity-20 px-2 py-1 rounded-full`}>
+    <aside 
+      className="fixed bottom-20 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:w-80 z-50"
+      role="complementary"
+      aria-label="현재 예약 상태"
+    >
+      <div className="bg-white rounded-xl shadow-lg border border-gray-300 p-6">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <div 
+              className={`w-4 h-4 rounded-full ${statusInfo.color}`}
+              aria-hidden="true"
+            ></div>
+            <span className={`text-base font-semibold ${statusInfo.textColor} ${statusInfo.bgColor} px-3 py-2 rounded-full`}>
               {statusInfo.text}
             </span>
           </div>
-          <button className="text-gray-400 hover:text-gray-600 min-h-[48px] min-w-[48px] flex items-center justify-center">
-            <X className="w-4 h-4" />
+          <button 
+            className="btn-accessible-small text-gray-600 hover:text-gray-800 focus:text-gray-800 flex items-center justify-center rounded-lg hover:bg-gray-100 focus:bg-gray-100"
+            aria-label="예약 위젯 닫기"
+          >
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
         
-        <div className="mb-3">
-          <h3 className="font-semibold text-gray-900 text-base">{activeReservation.bakery}</h3>
-          <p className="text-sm text-gray-600 flex items-center mt-1">
-            <Clock className="w-4 h-4 mr-1" />
-            수령시간: {activeReservation.pickupTime}
+        <div className="mb-4">
+          <h3 className="font-semibold text-accessible text-lg">{activeReservation.bakery}</h3>
+          <p className="text-accessible flex items-center mt-2">
+            <Clock className="w-5 h-5 mr-2" aria-hidden="true" />
+            <span className="sr-only">수령시간: </span>
+            {activeReservation.pickupTime}
           </p>
           {activeReservation.estimatedTime && (
-            <p className="text-sm text-orange-600 font-medium mt-1">
+            <p className="text-base text-orange-800 font-medium mt-2">
               {activeReservation.estimatedTime}
             </p>
           )}
         </div>
         
-        <div className="flex space-x-2">
+        <div className="flex space-x-3">
           <Link 
             to="/reservations" 
-            className="flex-1 bg-orange-600 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium text-center min-h-[48px] flex items-center justify-center"
+            className="flex-1 bg-orange-700 text-white btn-accessible rounded-lg hover:bg-orange-800 focus:bg-orange-800 transition-colors text-center flex items-center justify-center"
+            aria-label="예약 상세 정보 보기"
           >
             예약 상세보기
           </Link>
-          <button className="px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm min-h-[48px] flex items-center justify-center">
-            <MapPin className="w-4 h-4" />
+          <button 
+            className="btn-accessible border-2 border-gray-400 text-gray-800 rounded-lg hover:bg-gray-50 focus:bg-gray-50 transition-colors flex items-center justify-center"
+            aria-label="매장 위치 보기"
+          >
+            <MapPin className="w-5 h-5" aria-hidden="true" />
+            <span className="sr-only">위치 보기</span>
           </button>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 
