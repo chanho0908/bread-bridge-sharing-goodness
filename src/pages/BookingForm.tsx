@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, MapPin, User, Phone, MessageSquare, Calendar, Check } from 'lucide-react';
@@ -18,14 +17,15 @@ const BookingForm = () => {
     name: '선영이네 베이커리',
     address: '서울시 강남구 테헤란로 123',
     pickupTimeSlots: [
-      '16:00 - 17:00',
-      '17:00 - 18:00',
-      '18:00 - 19:00'
+      '16:00',
+      '17:00', 
+      '18:00',
+      '19:00'
     ],
     availableItems: [
-      { name: '크로와상', count: 5, originalPrice: 3000 },
-      { name: '식빵', count: 2, originalPrice: 4500 },
-      { name: '단팥빵', count: 3, originalPrice: 2500 }
+      { name: '크로와상', count: 5 },
+      { name: '식빵', count: 2 },
+      { name: '단팥빵', count: 3 }
     ]
   };
 
@@ -43,7 +43,7 @@ const BookingForm = () => {
   const getTotalValue = () => {
     return bakery.availableItems.reduce((sum, item) => {
       const selectedCount = selectedItems[item.name] || 0;
-      return sum + (selectedCount * item.originalPrice);
+      return sum + selectedCount;
     }, 0);
   };
 
@@ -105,7 +105,7 @@ const BookingForm = () => {
                 <div className="flex-1">
                   <h4 className="font-medium text-gray-900">{item.name}</h4>
                   <p className="text-sm text-gray-600">
-                    원가 {item.originalPrice.toLocaleString()}원 • {item.count}개 남음
+                    {item.count}개 남음
                   </p>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -138,7 +138,7 @@ const BookingForm = () => {
               <div className="flex justify-between items-center">
                 <span className="font-medium">선택한 빵</span>
                 <span className="font-semibold text-orange-600">
-                  총 {getTotalItems()}개 (원가 {getTotalValue().toLocaleString()}원)
+                  총 {getTotalItems()}개
                 </span>
               </div>
             </div>
@@ -151,7 +151,7 @@ const BookingForm = () => {
             <Clock className="w-5 h-5 inline mr-2" />
             픽업 시간 선택
           </h3>
-          <div className="grid grid-cols-1 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {bakery.pickupTimeSlots.map((time, index) => (
               <label key={index} className="flex items-center">
                 <input
