@@ -3,6 +3,7 @@ import React from 'react';
 import { Outlet, useLocation, Link } from 'react-router-dom';
 import { Home, MapPin, Calendar, User, Heart, Menu } from 'lucide-react';
 import { useState } from 'react';
+import ReservationFloatingWidget from './ReservationFloatingWidget';
 
 const Layout = () => {
   const location = useLocation();
@@ -36,13 +37,13 @@ const Layout = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-lg font-medium transition-colors min-h-[48px] ${
                     isActive(item.path)
                       ? 'text-orange-600 bg-orange-100'
-                      : 'text-gray-600 hover:text-orange-600 hover:bg-orange-50'
+                      : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50'
                   }`}
                 >
-                  <item.icon className="w-4 h-4" />
+                  <item.icon className="w-5 h-5" />
                   <span>{item.label}</span>
                 </Link>
               ))}
@@ -50,7 +51,7 @@ const Layout = () => {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+              className="md:hidden p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 min-h-[48px] min-w-[48px]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <Menu className="w-6 h-6" />
@@ -66,10 +67,10 @@ const Layout = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium ${
+                  className={`flex items-center space-x-2 px-3 py-3 rounded-md text-lg font-medium min-h-[48px] ${
                     isActive(item.path)
                       ? 'text-orange-600 bg-orange-100'
-                      : 'text-gray-600 hover:text-orange-600 hover:bg-orange-50'
+                      : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -87,6 +88,9 @@ const Layout = () => {
         <Outlet />
       </main>
 
+      {/* Floating Reservation Widget */}
+      <ReservationFloatingWidget />
+
       {/* Bottom Navigation for Mobile */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-orange-100 px-4 py-2">
         <div className="flex justify-around">
@@ -94,12 +98,12 @@ const Layout = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex flex-col items-center space-y-1 p-2 ${
-                isActive(item.path) ? 'text-orange-600' : 'text-gray-400'
+              className={`flex flex-col items-center space-y-1 p-2 min-h-[48px] min-w-[48px] justify-center ${
+                isActive(item.path) ? 'text-orange-600' : 'text-gray-500'
               }`}
             >
               <item.icon className="w-5 h-5" />
-              <span className="text-xs font-medium">{item.label}</span>
+              <span className="text-sm font-medium">{item.label}</span>
             </Link>
           ))}
         </div>

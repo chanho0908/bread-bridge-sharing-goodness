@@ -10,6 +10,7 @@ import Map from "./pages/Map";
 import Reservations from "./pages/Reservations";
 import Profile from "./pages/Profile";
 import Donate from "./pages/Donate";
+import BreadDonation from "./pages/BreadDonation";
 import NotFound from "./pages/NotFound";
 import BakeryDetail from "./pages/BakeryDetail";
 import BookingForm from "./pages/BookingForm";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="reservations" element={<Reservations />} />
             <Route path="profile" element={<Profile />} />
             <Route path="donate" element={<Donate />} />
+            <Route path="bread-donation" element={<BreadDonation />} />
           </Route>
           <Route path="/bakery/:id" element={<BakeryDetail />} />
           <Route path="/booking/:id" element={<BookingForm />} />
